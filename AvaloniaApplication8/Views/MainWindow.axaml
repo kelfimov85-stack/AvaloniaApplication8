@@ -15,4 +15,42 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>   
 
+    
+
+    <StackPanel>
+        <StackPanel Margin="0 0 0 20">
+            <TextBox Watermark="Search" Text="{Binding SearchText}"/>
+            <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SearchCategory}">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox ItemsSource="{Binding SortOptions}" SelectedItem="{Binding SortCategory}"/>
+        </StackPanel>
+		<ListBox ItemsSource="{Binding Products}">
+		    <ListBox.ItemTemplate>
+			    <DataTemplate>
+				    <StackPanel>
+					    <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Background="#dadada">
+            <Button Content="Page 1" Command="{Binding GoPageZeroCommand}" />
+        </StackPanel>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentPage}"/>
+    </Grid>
+    </StackPanel>
+
 </Window>

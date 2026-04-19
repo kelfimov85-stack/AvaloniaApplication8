@@ -27,7 +27,10 @@ namespace AvaloniaApplication8
                 return (Control)Activator.CreateInstance(type)!;
             }
 
-            return new TextBlock { Text = "Not Found: " + name };
+            return param switch
+            {
+                PageZero => new PageZeroView()
+            };
         }
 
         public bool Match(object? data)
